@@ -2,1289 +2,414 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHIBIN RAJ DS | Cybersecurity Architect & Founder</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Professional Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            /* Professional Color Palette */
-            --primary-blue: #0066cc;
-            --dark-blue: #003366;
-            --light-blue: #e6f2ff;
-            --accent-blue: #3399ff;
-            --neutral-dark: #1a1a1a;
-            --neutral-gray: #4d4d4d;
-            --neutral-light: #f5f7fa;
-            --success-green: #28a745;
-            --warning-orange: #ff8c00;
-            
-            /* Professional Gradients */
-            --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
-            --gradient-subtle: linear-gradient(135deg, var(--light-blue) 0%, #ffffff 100%);
-            
-            /* Fonts */
-            --font-primary: 'Inter', sans-serif;
-            --font-heading: 'Space Grotesk', sans-serif;
-            --font-mono: 'IBM Plex Mono', monospace;
-            
-            /* Spacing */
-            --space-xs: 0.5rem;
-            --space-sm: 1rem;
-            --space-md: 2rem;
-            --space-lg: 3rem;
-            --space-xl: 5rem;
-            
-            /* Border Radius */
-            --radius-sm: 4px;
-            --radius-md: 8px;
-            --radius-lg: 16px;
-            
-            /* Shadows */
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
-            
-            /* Transitions */
-            --transition-fast: 0.2s ease;
-            --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
-        body {
-            font-family: var(--font-primary);
-            color: var(--neutral-dark);
-            background-color: #ffffff;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-md);
-        }
-
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
-            font-weight: 600;
-            line-height: 1.3;
-            color: var(--dark-blue);
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: var(--space-lg);
-            position: relative;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--gradient-primary);
-            border-radius: 2px;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: var(--space-sm);
-        }
-
-        p {
-            margin-bottom: var(--space-md);
-            color: var(--neutral-gray);
-        }
-
-        .text-gradient {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-            border-bottom: 1px solid rgba(0, 51, 102, 0.1);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: var(--space-sm) 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: var(--space-xs);
-            font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            text-decoration: none;
-        }
-
-        .logo i {
-            color: var(--primary-blue);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: var(--space-lg);
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--neutral-gray);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition-fast);
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-blue);
-            transition: var(--transition-normal);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-blue);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            cursor: pointer;
-            padding: var(--space-xs);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: var(--space-xl) 0;
-            background: var(--gradient-subtle);
-            margin-top: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Q50,80 0,100 Z" fill="%230066cc" opacity="0.03"/></svg>');
-            background-size: cover;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-xl);
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-text {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .hero-image-container {
-            display: flex;
-            justify-content: center;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-
-        .profile-image {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-            border: 8px solid white;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            margin-bottom: var(--space-sm);
-            color: var(--dark-blue);
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--primary-blue);
-            margin-bottom: var(--space-md);
-            font-weight: 500;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            margin-bottom: var(--space-lg);
-            color: var(--neutral-gray);
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-sm);
-            padding: 12px 32px;
-            background: var(--primary-blue);
-            color: white;
-            text-decoration: none;
-            border: none;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition-normal);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn:hover {
-            background: var(--dark-blue);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary-blue);
-            color: var(--primary-blue);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-blue);
-            color: white;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: var(--space-sm);
-            flex-wrap: wrap;
-        }
-
-        /* Cards */
-        .card {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: var(--space-lg);
-            box-shadow: var(--shadow-md);
-            border: 1px solid rgba(0, 51, 102, 0.1);
-            transition: var(--transition-normal);
-            height: 100%;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .icon-card {
-            text-align: center;
-            padding: var(--space-xl) var(--space-lg);
-        }
-
-        .icon-card i {
-            font-size: 3rem;
-            color: var(--primary-blue);
-            margin-bottom: var(--space-md);
-            background: var(--light-blue);
-            width: 80px;
-            height: 80px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-
-        /* Sections */
-        section {
-            padding: var(--space-xl) 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: var(--space-xl);
-        }
-
-        .section-header h2::after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .section-description {
-            max-width: 600px;
-            margin: 0 auto var(--space-xl);
-            text-align: center;
-            color: var(--neutral-gray);
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-xl);
-            align-items: center;
-        }
-
-        .about-text {
-            padding-right: var(--space-md);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-md);
-            margin-top: var(--space-lg);
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: var(--space-md);
-            background: var(--light-blue);
-            border-radius: var(--radius-md);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: var(--space-xs);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--neutral-gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-lg);
-        }
-
-        .skill-category {
-            margin-bottom: var(--space-lg);
-        }
-
-        .skill-item {
-            margin-bottom: var(--space-md);
-        }
-
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: var(--space-xs);
-        }
-
-        .skill-name {
-            font-weight: 600;
-            color: var(--dark-blue);
-        }
-
-        .skill-level {
-            font-weight: 500;
-            color: var(--primary-blue);
-        }
-
-        .skill-bar {
-            height: 8px;
-            background: var(--light-blue);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: var(--gradient-primary);
-            border-radius: 4px;
-            width: 0;
-            transition: width 1s ease-in-out;
-        }
-
-        /* Experience Timeline */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--light-blue);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 60px;
-            margin-bottom: var(--space-xl);
-        }
-
-        .timeline-date {
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: var(--primary-blue);
-            color: white;
-            padding: 4px 12px;
-            border-radius: var(--radius-md);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .timeline-content {
-            background: white;
-            padding: var(--space-lg);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            border: 1px solid rgba(0, 51, 102, 0.1);
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: var(--space-lg);
-        }
-
-        .project-card {
-            overflow: hidden;
-        }
-
-        .project-image {
-            height: 200px;
-            background: var(--light-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--primary-blue);
-            margin-bottom: var(--space-md);
-            border-radius: var(--radius-md);
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-xs);
-            margin: var(--space-md) 0;
-        }
-
-        .project-tag {
-            background: var(--light-blue);
-            color: var(--primary-blue);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-lg);
-        }
-
-        .contact-form {
-            padding: var(--space-lg);
-        }
-
-        .form-group {
-            margin-bottom: var(--space-md);
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: var(--space-xs);
-            font-weight: 500;
-            color: var(--dark-blue);
-        }
-
-        .form-input,
-        .form-textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #ddd;
-            border-radius: var(--radius-md);
-            font-family: var(--font-primary);
-            font-size: 1rem;
-            transition: var(--transition-fast);
-        }
-
-        .form-input:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark-blue);
-            color: white;
-            padding: var(--space-xl) 0 var(--space-lg);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-xl);
-            margin-bottom: var(--space-xl);
-        }
-
-        .footer-section h3 {
-            color: white;
-            margin-bottom: var(--space-md);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: var(--space-xs);
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: var(--transition-fast);
-        }
-
-        .footer-links a:hover {
-            color: white;
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: var(--space-sm);
-            margin-top: var(--space-md);
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: var(--transition-normal);
-        }
-
-        .social-links a:hover {
-            background: var(--primary-blue);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: var(--space-lg);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-            
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .hero::before {
-                display: none;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: var(--space-lg);
-                box-shadow: var(--shadow-lg);
-                gap: var(--space-md);
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .btn-group {
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 576px) {
-            :root {
-                --space-md: 1.5rem;
-                --space-lg: 2rem;
-                --space-xl: 3rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 1.75rem;
-            }
-            
-            .hero {
-                padding: var(--space-lg) 0;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Utility Classes */
-        .text-center {
-            text-align: center;
-        }
-
-        .mb-sm { margin-bottom: var(--space-sm); }
-        .mb-md { margin-bottom: var(--space-md); }
-        .mb-lg { margin-bottom: var(--space-lg); }
-        .mb-xl { margin-bottom: var(--space-xl); }
-
-        .mt-sm { margin-top: var(--space-sm); }
-        .mt-md { margin-top: var(--space-md); }
-        .mt-lg { margin-top: var(--space-lg); }
-        .mt-xl { margin-top: var(--space-xl); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHIBIN RAJ DS | Cybersecurity Architect</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --bg-main:#0b0f14;
+  --bg-secondary:#101720;
+  --card-bg:#121a24;
+  --border:#1f2a37;
+
+  --text-main:#e5e7eb;
+  --text-muted:#9ca3af;
+
+  --neon:#00e5ff;
+  --neon-soft:rgba(0,229,255,.15);
+  --danger:#ff4d4d;
+
+  --font-main:'Inter',sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+
+  --radius:14px;
+  --shadow:0 0 40px rgba(0,229,255,.08);
+  --transition:.3s ease;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-main);
+  background:radial-gradient(circle at top, #0e1623, #070b10);
+  color:var(--text-main);
+  line-height:1.6;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 1.5rem;
+}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:1000;
+  background:rgba(7,11,16,.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.header-container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem 0;
+}
+.logo{
+  font-weight:700;
+  letter-spacing:1px;
+  color:var(--neon);
+  text-decoration:none;
+}
+.logo i{margin-right:.5rem}
+
+.nav-links{
+  display:flex;
+  gap:2rem;
+  list-style:none;
+}
+.nav-links a{
+  text-decoration:none;
+  color:var(--text-muted);
+  font-size:.95rem;
+  transition:var(--transition);
+}
+.nav-links a:hover{
+  color:var(--neon);
+}
+
+/* ===== HERO ===== */
+.hero{
+  padding:9rem 0 6rem;
+  position:relative;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(transparent 95%, var(--neon-soft) 96%),
+    linear-gradient(90deg, transparent 95%, var(--neon-soft) 96%);
+  background-size:40px 40px;
+  pointer-events:none;
+}
+.hero-content{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:4rem;
+  align-items:center;
+}
+.hero h1{
+  font-size:3.2rem;
+  line-height:1.2;
+}
+.hero .subtitle{
+  color:var(--neon);
+  font-family:var(--font-mono);
+  margin:1rem 0;
+}
+.hero p{
+  color:var(--text-muted);
+  max-width:520px;
+}
+.btn-group{
+  display:flex;
+  gap:1rem;
+  margin-top:2rem;
+}
+.btn{
+  padding:.8rem 1.8rem;
+  border-radius:var(--radius);
+  border:1px solid var(--neon);
+  background:transparent;
+  color:var(--neon);
+  cursor:pointer;
+  text-decoration:none;
+  font-weight:500;
+  transition:var(--transition);
+}
+.btn:hover{
+  background:var(--neon);
+  color:#000;
+  box-shadow:var(--shadow);
+}
+.hero img{
+  width:100%;
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+
+/* ===== SECTION ===== */
+section{padding:6rem 0}
+.section-title{
+  text-align:center;
+  margin-bottom:3rem;
+}
+.section-title h2{
+  font-size:2.2rem;
+}
+.section-title p{
+  color:var(--text-muted);
+  margin-top:.5rem;
+}
+
+/* ===== CARDS ===== */
+.card{
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:2rem;
+  transition:var(--transition);
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow);
+}
+
+/* ===== SKILLS ===== */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2rem;
+}
+.skill{
+  margin-bottom:1.2rem;
+}
+.skill span{
+  display:flex;
+  justify-content:space-between;
+  font-family:var(--font-mono);
+  font-size:.85rem;
+}
+.bar{
+  height:6px;
+  background:#020617;
+  border-radius:4px;
+  overflow:hidden;
+}
+.bar div{
+  height:100%;
+  background:linear-gradient(90deg,var(--neon),#00ffa6);
+}
+
+/* ===== TIMELINE ===== */
+.timeline{
+  max-width:800px;
+  margin:auto;
+  border-left:2px solid var(--border);
+  padding-left:2rem;
+}
+.timeline-item{
+  margin-bottom:3rem;
+}
+.timeline-item h4{
+  color:var(--neon);
+  font-family:var(--font-mono);
+}
+
+/* ===== PROJECTS ===== */
+.projects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:2rem;
+}
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  margin:1rem 0;
+}
+.tag{
+  font-size:.75rem;
+  padding:.3rem .7rem;
+  border:1px solid var(--neon);
+  border-radius:999px;
+  color:var(--neon);
+  font-family:var(--font-mono);
+}
+
+/* ===== CONTACT ===== */
+form input,form textarea{
+  width:100%;
+  background:#020617;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:.8rem;
+  color:var(--text-main);
+  margin-bottom:1rem;
+}
+form input:focus,form textarea:focus{
+  outline:none;
+  border-color:var(--neon);
+}
+
+/* ===== FOOTER ===== */
+footer{
+  border-top:1px solid var(--border);
+  padding:2rem 0;
+  text-align:center;
+  color:var(--text-muted);
+  font-size:.9rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .hero-content{grid-template-columns:1fr;text-align:center}
+  .btn-group{justify-content:center}
+}
+</style>
 </head>
+
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <a href="#" class="logo">
-                <i class="fas fa-shield-alt"></i>
-                SRDS
-            </a>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#expertise">Expertise</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">SHIBIN RAJ DS</h1>
-                    <div class="hero-subtitle">Cybersecurity Architect & Founder</div>
-                    <p class="hero-description">
-                        Leading N3XUS Security with a focus on advanced threat detection, 
-                        ethical hacking, and building robust digital defense systems for 
-                        modern enterprises.
-                    </p>
-                    <div class="btn-group">
-                        <a href="#contact" class="btn">
-                            <i class="fas fa-envelope"></i>
-                            Contact Me
-                        </a>
-                        <a href="#projects" class="btn btn-outline">
-                            <i class="fas fa-briefcase"></i>
-                            View Projects
-                        </a>
-                    </div>
-                </div>
-                <div class="hero-image-container">
-                    <img src="image.jpg" alt="SHIBIN RAJ DS" class="profile-image">
-                </div>
-            </div>
-        </div>
-    </section>
+<header>
+  <div class="container header-container">
+    <a class="logo"><i class="fas fa-shield-halved"></i> SRDS</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Expertise</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>About Me</h2>
-                <p class="section-description">
-                    With extensive experience in cybersecurity architecture and ethical hacking, 
-                    I specialize in building secure systems and leading security initiatives.
-                </p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Security Visionary & Technical Leader</h3>
-                    <p>
-                        As the founder of N3XUS Security, I lead a team dedicated to proactive 
-                        threat detection and comprehensive security solutions. My approach 
-                        combines technical expertise with strategic thinking to address 
-                        evolving cybersecurity challenges.
-                    </p>
-                    <p>
-                        I believe in security as an ongoing process rather than a one-time 
-                        solution, focusing on building resilient systems that can adapt to 
-                        emerging threats while maintaining operational efficiency.
-                    </p>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-number">8+</div>
-                            <div class="stat-label">Years Experience</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label">Projects Completed</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Client Satisfaction</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Security Monitoring</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3 class="mb-md">Core Principles</h3>
-                    <div class="principles-list">
-                        <div class="principle-item mb-md">
-                            <h4><i class="fas fa-lock text-gradient"></i> Proactive Defense</h4>
-                            <p>Anticipating threats before they materialize through continuous monitoring and analysis.</p>
-                        </div>
-                        <div class="principle-item mb-md">
-                            <h4><i class="fas fa-code text-gradient"></i> Ethical Excellence</h4>
-                            <p>Maintaining the highest standards of ethics and professionalism in all security engagements.</p>
-                        </div>
-                        <div class="principle-item">
-                            <h4><i class="fas fa-network-wired text-gradient"></i> Continuous Learning</h4>
-                            <p>Staying ahead of evolving threats through ongoing research and skill development.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="hero">
+  <div class="container hero-content">
+    <div>
+      <h1>SHIBIN RAJ DS</h1>
+      <div class="subtitle">Cybersecurity Architect • Founder of N3XUS Security</div>
+      <p>Designing hardened digital infrastructures, offensive security frameworks, and proactive defense systems for modern threat landscapes.</p>
+      <div class="btn-group">
+        <a href="#contact" class="btn">Contact</a>
+        <a href="#projects" class="btn">Projects</a>
+      </div>
+    </div>
+    <img src="image.jpg" alt="Profile">
+  </div>
+</section>
 
-    <!-- Expertise Section -->
-    <section id="expertise" class="bg-light">
-        <div class="container">
-            <div class="section-header">
-                <h2>Technical Expertise</h2>
-                <p class="section-description">
-                    Specialized skills in cybersecurity domains with proven track record 
-                    in implementation and management.
-                </p>
-            </div>
-            <div class="skills-grid">
-                <div class="card">
-                    <h3 class="mb-md">Security Domains</h3>
-                    <div class="skill-category">
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Network Security</span>
-                                <span class="skill-level">Expert</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Application Security</span>
-                                <span class="skill-level">Expert</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Cloud Security</span>
-                                <span class="skill-level">Advanced</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <h3 class="mb-md">Tools & Technologies</h3>
-                    <div class="skill-category">
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Kali Linux & Security Tools</span>
-                                <span class="skill-level">Expert</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Python & Automation</span>
-                                <span class="skill-level">Advanced</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 88%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">SIEM & Monitoring</span>
-                                <span class="skill-level">Advanced</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="about">
+  <div class="container">
+    <div class="section-title">
+      <h2>About Me</h2>
+      <p>Security-first mindset with an attacker’s perspective</p>
+    </div>
+    <div class="card">
+      <p>I specialize in ethical hacking, threat detection, and enterprise-grade security architectures. As the founder of N3XUS Security, I focus on proactive defense, continuous learning, and real-world attack simulation.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="container">
-            <div class="section-header">
-                <h2>Professional Experience</h2>
-                <p class="section-description">
-                    A track record of leadership and technical excellence in cybersecurity.
-                </p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">2020 - Present</div>
-                    <div class="timeline-content">
-                        <h3>Founder & Lead Security Analyst</h3>
-                        <div class="text-gradient mb-sm">N3XUS Security</div>
-                        <p>
-                            Established and grew a cybersecurity consulting firm specializing 
-                            in advanced threat detection and ethical hacking services. Lead 
-                            a team of security professionals delivering comprehensive 
-                            security solutions to enterprise clients.
-                        </p>
-                        <ul>
-                            <li>Developed proprietary security frameworks</li>
-                            <li>Managed security operations for multiple enterprises</li>
-                            <li>Conducted advanced penetration testing</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">2018 - 2020</div>
-                    <div class="timeline-content">
-                        <h3>Senior Cybersecurity Consultant</h3>
-                        <div class="text-gradient mb-sm">Various Enterprises</div>
-                        <p>
-                            Provided expert cybersecurity consultation to financial institutions 
-                            and technology companies, focusing on network security architecture 
-                            and incident response planning.
-                        </p>
-                        <ul>
-                            <li>Designed security architectures</li>
-                            <li>Implemented SIEM solutions</li>
-                            <li>Conducted security audits</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<section id="skills">
+  <div class="container">
+    <div class="section-title">
+      <h2>Technical Expertise</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="card">
+        <div class="skill">
+          <span><b>Network Security</b><i>95%</i></span>
+          <div class="bar"><div style="width:95%"></div></div>
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="bg-light">
-        <div class="container">
-            <div class="section-header">
-                <h2>Featured Projects</h2>
-                <p class="section-description">
-                    Selected security initiatives and tool development projects.
-                </p>
-            </div>
-            <div class="projects-grid">
-                <div class="card project-card">
-                    <div class="project-image">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3>NEXUS Security Scanner</h3>
-                    <p>
-                        Advanced multi-threaded security assessment tool for comprehensive 
-                        vulnerability discovery and network reconnaissance.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">Multi-threading</span>
-                        <span class="project-tag">Security</span>
-                    </div>
-                    <a href="#" class="btn btn-outline">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Details
-                    </a>
-                </div>
-                
-                <div class="card project-card">
-                    <div class="project-image">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Enterprise Defense Framework</h3>
-                    <p>
-                        Comprehensive security framework for automated threat detection 
-                        and real-time security monitoring in enterprise environments.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Django</span>
-                        <span class="project-tag">React</span>
-                        <span class="project-tag">Docker</span>
-                    </div>
-                    <a href="#" class="btn btn-outline">
-                        <i class="fas fa-external-link-alt"></i>
-                        Explore Framework
-                    </a>
-                </div>
-                
-                <div class="card project-card">
-                    <div class="project-image">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Automated Testing Suite</h3>
-                    <p>
-                        Custom automation suite for comprehensive penetration testing 
-                        with modular architecture and extensive reporting capabilities.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">Automation</span>
-                        <span class="project-tag">Security</span>
-                    </div>
-                    <a href="#" class="btn btn-outline">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Project
-                    </a>
-                </div>
-            </div>
+        <div class="skill">
+          <span><b>Application Security</b><i>90%</i></span>
+          <div class="bar"><div style="width:90%"></div></div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Get In Touch</h2>
-                <p class="section-description">
-                    Interested in enhancing your security posture? Let's discuss your needs.
-                </p>
-            </div>
-            <div class="contact-grid">
-                <div class="card contact-form">
-                    <h3 class="mb-md">Send a Message</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label class="form-label" for="name">Name</label>
-                            <input type="text" id="name" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="email">Email</label>
-                            <input type="email" id="email" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="subject">Subject</label>
-                            <input type="text" id="subject" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="message">Message</label>
-                            <textarea id="message" class="form-textarea" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">
-                            <i class="fas fa-paper-plane"></i>
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-                
-                <div class="card">
-                    <h3 class="mb-md">Contact Information</h3>
-                    <div class="contact-info mb-lg">
-                        <div class="contact-item mb-md">
-                            <h4><i class="fas fa-envelope text-gradient"></i> Email</h4>
-                            <p>shibinpsycho87@gmail.com</p>
-                        </div>
-                        <div class="contact-item mb-md">
-                            <h4><i class="fab fa-github text-gradient"></i> GitHub</h4>
-                            <p>github.com/psychohackers</p>
-                        </div>
-                        <div class="contact-item">
-                            <h4><i class="fas fa-briefcase text-gradient"></i> Services</h4>
-                            <p>Security Consulting & Penetration Testing</p>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="mailto:shibinpsycho87@gmail.com" title="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="https://github.com/psychohackers" target="_blank" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" title="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" title="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <div class="skill">
+          <span><b>Cloud Security</b><i>85%</i></span>
+          <div class="bar"><div style="width:85%"></div></div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>SHIBIN RAJ DS</h3>
-                    <p>Cybersecurity Architect & Founder of N3XUS Security, specializing in advanced threat detection and ethical hacking.</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#hero">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#expertise">Expertise</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Security Consulting</a></li>
-                        <li><a href="#">Penetration Testing</a></li>
-                        <li><a href="#">Incident Response</a></li>
-                        <li><a href="#">Security Training</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                &copy; 2024 SHIBIN RAJ DS | N3XUS Security. All rights reserved.
-            </div>
+      </div>
+      <div class="card">
+        <div class="skill">
+          <span><b>Kali Linux / Tools</b><i>95%</i></span>
+          <div class="bar"><div style="width:95%"></div></div>
         </div>
-    </footer>
+        <div class="skill">
+          <span><b>Python Automation</b><i>88%</i></span>
+          <div class="bar"><div style="width:88%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Close mobile menu on link click
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-        
-        // Animate skill bars on scroll
-        const skillBars = document.querySelectorAll('.skill-progress');
-        
-        function animateSkillBars() {
-            skillBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0';
-                
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 300);
-            });
-        }
-        
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.3,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (entry.target.id === 'expertise') {
-                        animateSkillBars();
-                    }
-                    entry.target.style.animation = 'fadeInUp 0.6s ease-out';
-                }
-            });
-        }, observerOptions);
-        
-        // Observe sections
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-        
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
-            
-            // In a real application, you would send this data to a server
-            console.log('Form submitted:', formData);
-            
-            // Show success message
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
-            } else {
-                header.style.boxShadow = '0 2px 8px rgba(0,0,0,0.05)';
-            }
-        });
-    </script>
+<section id="experience">
+  <div class="container">
+    <div class="section-title">
+      <h2>Experience</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>2020 – Present</h4>
+        <p><b>Founder & Lead Security Analyst – N3XUS Security</b></p>
+        <p>Leading offensive security operations, penetration testing, and enterprise defense implementations.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>2018 – 2020</h4>
+        <p><b>Senior Cybersecurity Consultant</b></p>
+        <p>Designed secure architectures and incident response strategies for enterprises.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-title">
+      <h2>Projects</h2>
+    </div>
+    <div class="projects">
+      <div class="card">
+        <h3>NEXUS Security Scanner</h3>
+        <p>Multi-threaded vulnerability scanner and recon framework.</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Security</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Enterprise Defense Framework</h3>
+        <p>Automated threat detection and monitoring system.</p>
+        <div class="tags">
+          <span class="tag">Docker</span>
+          <span class="tag">SIEM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-title">
+      <h2>Contact</h2>
+    </div>
+    <div class="card">
+      <form>
+        <input placeholder="Name" required>
+        <input placeholder="Email" required>
+        <textarea rows="5" placeholder="Message"></textarea>
+        <button class="btn" type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2024 SHIBIN RAJ DS • N3XUS Security
+</footer>
+
 </body>
 </html>
